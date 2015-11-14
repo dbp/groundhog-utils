@@ -135,8 +135,6 @@ newtype Sh a = Sh { _getSh :: a }
 makeLenses ''Sh
 makeWrapped ''Sh
 
-instance NeverNull (Sh a)
-
 instance (Show a, Read a) => PersistField (Sh a) where
     persistName _ = "Sh" ++ delim : delim : persistName (undefined :: ByteString)
     toPersistValues = primToPersistValue
