@@ -115,8 +115,6 @@ newtype SC a = SC { _getSC :: a }
 makeLenses ''SC
 makeWrapped ''SC
 
-instance NeverNull (SC a)
-
 instance SafeCopy a => PersistField (SC a) where
     persistName _ = "SC" ++ delim : delim : persistName (undefined :: ByteString)
     toPersistValues = primToPersistValue
